@@ -8,9 +8,13 @@ summary: |-
 upstream:
   url: https://www.blender.org/
   version:
-    type: command
-    run: |-
-      curl -s https://projects.blender.org/api/v1/repos/blender/blender/tags | jq -r '.[] | select(.name | contains("-rc") | not) | .name' | sed 's|^v||g' | sort -rV | head -1
+    type: json
+    url: https://projects.blender.org/api/v1/repos/blender/blender/tags
+    jq: .[].name | select(contains("-rc") | not)
+    sort: version
+    transform:
+    - regex: ^v
+      replace: ''
 
 release:
   branch: master
