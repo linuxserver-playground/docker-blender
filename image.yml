@@ -15,6 +15,11 @@ upstream:
     transform:
     - regex: ^v
       replace: ''
+  sponsor:
+  - name: Blender Development Fund
+    url: https://fund.blender.org/
+  - name: Blender one-time donation
+    url: https://fund.blender.org/donate-once/
 
 release:
   branch: master
